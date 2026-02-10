@@ -6,63 +6,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #0099ff;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
+/* ============================
+   Global Layout
+   ============================ */
 
-    #ad-container {
-      width: 320px;
-      height: 250px;
-      border-radius: 14px;
-      overflow: hidden;
-      background: white;
-      position: relative;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0099ff, #0077cc);
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+}
 
-    .ad-frame {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+/* ============================
+   Ad Container
+   ============================ */
 
-    .custom-ad {
-      width: 100%;
-      height: 100%;
-      display: none;
-      cursor: pointer;
-      text-align: center;
-      background: #0099ff;
-      border: 3px solid #fff;
-    }
+#ad-container {
+  width: 320px;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  position: relative;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-    .custom-ad img {
-      width: 100%;
-      height: 70%;
-      object-fit: cover;
-    }
+#ad-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+}
 
-    .custom-ad span {
-      display: block;
-      padding: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-    }
+/* ============================
+   Iframe Ads
+   ============================ */
 
-    noscript {
-      color: red;
-      font-weight: bold;
-      padding: 20px;
-      text-align: center;
-    }
+.ad-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ============================
+   Custom Ads (Camcookie Ads)
+   ============================ */
+
+.custom-ad {
+  width: 100%;
+  height: 100%;
+  display: none;
+  cursor: pointer;
+  text-align: center;
+  background: #0099ff;
+  border: 3px solid #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.custom-ad:hover {
+  background: #0077cc;
+  transform: scale(1.02);
+}
+
+/* Image inside custom ads */
+.custom-ad img {
+  width: 100%;
+  height: 65%;
+  object-fit: cover;
+  background: #0066aa;
+}
+
+/* Text inside custom ads */
+.custom-ad span {
+  display: block;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ============================
+   NoScript Warning
+   ============================ */
+
+noscript {
+  color: #ff4444;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  display: block;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
   </style>
 </head>
 <body>
