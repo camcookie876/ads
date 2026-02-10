@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Camcookie Ad Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #fff7e6;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    h1 {
+      color: #ff7a00;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .setting-box {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    /* Camcookie-style switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .3s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #ff7a00;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .desc {
+      margin-top: 15px;
+      font-size: 15px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<noscript>Camcookie Ads require JavaScript to display properly.</noscript>
+
+<h1>Camcookie Ad Settings</h1>
+
+<div class="setting-box">
+
+  <div class="toggle-row">
+    <span>Allow A‑Ads (3rd‑party ads)</span>
+
+    <label class="switch">
+      <input type="checkbox" id="toggle-aads">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <p class="desc">
+    When OFF, Camcookie will only show built‑in Camcookie ads.<br>
+    When ON, Camcookie will also show A‑Ads inside the ad rotation.
+  </p>
+
+</div>
+
+<script>
+  const toggle = document.getElementById("toggle-aads");
+
+  // Load saved setting (default = OFF)
+  toggle.checked = localStorage.getItem("camcookie_allow_aads") === "true";
+
+  // Save setting when changed
+  toggle.addEventListener("change", () => {
+    localStorage.setItem("camcookie_allow_aads", toggle.checked);
+  });
+</script>
+
+</body>
+</html>

@@ -80,35 +80,56 @@
   </iframe>
 
   <!-- Your custom ads -->
-  <div class="custom-ad" onclick="window.open('https://camcookie876.github.io')">
-    <img src="https://via.placeholder.com/320x180?text=Camcookie+Ad">
-    <span>Try Camcookie Today</span>
+  <div class="custom-ad" onclick="window.open('https://camcookie876.github.io/connect/')">
+    <img src="">
+    <span>Get Camcookie Connect 26</span>
   </div>
 
-  <div class="custom-ad" onclick="window.open('https://camcookieg.github.io')">
-    <img src="https://via.placeholder.com/320x180?text=Camcookie+Games">
+  <div class="custom-ad" onclick="window.open('https://github.com/camcookie876/PI/tree/main?tab=readme-ov-file#camookie-appstore')">
+    <img src="">
+    <span>Get the Camcookie Appstore for PI</span>
+  </div>
+
+  <div class="custom-ad" onclick="window.open('https://camcookieg.github.io/')">
+    <img src="">
     <span>Play Camcookie Games</span>
   </div>
 
+  <div class="custom-ad" onclick="window.open('https://camcookieg.github.io/game/2/')">
+    <img src="https://camcookie876.github.io/ads/pattle-and-ball.png">
+    <span>Play Paddle and Ball on Camcookie Games</span>
+  </div>
 </div>
 
 <script>
-  const ads = [
-    document.getElementById("aads"),
-    ...document.querySelectorAll(".custom-ad")
-  ];
+  function startAds() {
+    const allowAAds = localStorage.getItem("camcookie_allow_aads") === "true";
 
-  let index = 0;
+    const aads = document.getElementById("aads");
+    const customAds = document.querySelectorAll(".custom-ad");
 
-  function rotateAds() {
-    ads.forEach(ad => ad.style.display = "none");
-    ads[index].style.display = "block";
+    let ads = [];
 
-    index = (index + 1) % ads.length;
+    if (allowAAds) {
+      ads = [aads, ...customAds];
+    } else {
+      ads = [...customAds];
+      aads.style.display = "none";
+    }
+
+    let index = 0;
+
+    function rotate() {
+      ads.forEach(ad => ad.style.display = "none");
+      ads[index].style.display = "block";
+      index = (index + 1) % ads.length;
+    }
+
+    rotate();
+    setInterval(rotate, 12000);
   }
 
-  rotateAds();
-  setInterval(rotateAds, 12000); // 12 seconds per ad
+  startAds();
 </script>
 
 </body>
