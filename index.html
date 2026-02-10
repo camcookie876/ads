@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Camcookie Ads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff7e6;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #ad-container {
+      width: 320px;
+      height: 250px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      background: white;
+      position: relative;
+    }
+
+    .ad-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .custom-ad {
+      width: 100%;
+      height: 100%;
+      display: none;
+      cursor: pointer;
+      text-align: center;
+      background: white;
+    }
+
+    .custom-ad img {
+      width: 100%;
+      height: 70%;
+      object-fit: cover;
+    }
+
+    .custom-ad span {
+      display: block;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff7a00;
+    }
+
+    noscript {
+      color: red;
+      font-weight: bold;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<noscript>Camcookie Ads require JavaScript to display properly.</noscript>
+
+<div id="ad-container">
+
+  <!-- A-Ads iframe -->
+  <iframe
+    id="aads"
+    class="ad-frame"
+    data-aa="2427098"
+    src="//acceptable.a-ads.com/2427098/?size=Adaptive&background_color=0099ff&title_color=ffffff&title_hover_color=0000ff&text_color=ffffff&link_color=ff0000&link_hover_color=ff9900">
+  </iframe>
+
+  <!-- Your custom ads -->
+  <div class="custom-ad" onclick="window.open('https://camcookie876.github.io')">
+    <img src="https://via.placeholder.com/320x180?text=Camcookie+Ad">
+    <span>Try Camcookie Today</span>
+  </div>
+
+  <div class="custom-ad" onclick="window.open('https://camcookieg.github.io')">
+    <img src="https://via.placeholder.com/320x180?text=Camcookie+Games">
+    <span>Play Camcookie Games</span>
+  </div>
+
+</div>
+
+<script>
+  const ads = [
+    document.getElementById("aads"),
+    ...document.querySelectorAll(".custom-ad")
+  ];
+
+  let index = 0;
+
+  function rotateAds() {
+    ads.forEach(ad => ad.style.display = "none");
+    ads[index].style.display = "block";
+
+    index = (index + 1) % ads.length;
+  }
+
+  rotateAds();
+  setInterval(rotateAds, 12000); // 12 seconds per ad
+</script>
+
+</body>
+</html>
